@@ -11,10 +11,13 @@ on a microchip doubles about every two years. To achieve more smaller
 chips we have to find new and innovative solutions.
 
 
+Also please READ the project proposal for details..
+
+
 ### Members 
 | Name |Enrollment no| E-mail ID|
 |-------------|----------|-------------------|
-|Ankit Aharwal |18114006|| aaharwal@cs.iitr.ac.in|
+|Ankit Aharwal |18114006| aaharwal@cs.iitr.ac.in|
 |Anuj Gupta |18114008 |agupta6@cs.iitr.ac.in|
 |Mohit Kumar |18114049| mkumar2@cs.iitr.ac.in|
 |Navjit singh| 18116051 |nsingh1@ec.iitr.ac.in|
