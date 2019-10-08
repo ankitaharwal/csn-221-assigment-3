@@ -1,14 +1,18 @@
 Hi First Of All Thanks For visiting this repository.
 ## Instruction Encoding for Area minimalization of Instruction ROM.
-In the current age of competitiion is has become a neccessity to optimise performance in order to just stay with the front.
-This project will aim in improving the Instruction Encoding System / Techniques available out there .
+In this current age of COMPETITION it has become a neccessity to optimise performance of our systems in order to just stay with the front. Every Year hundreds of companies / products show up in the market and hundreds of them (+ already existing) leave the market.
+
+Our project Aims to provide improvements  in the computer systems .
+This project will aim in improving the Instruction Encoding System / Techniques available out there in the market.
 We will focus to list the commonly used Instruction Encoding Formats their advantages , disadvantages , fallbacks 
 and we will try to improve them so that the chip space can be reduced.
 ### Why this project is worth putting your interest.
-First as we know moore’s law is ending,
+First as we know MOORE'S LAW IS ENDING, 
 we can no longer make chips small by doubling number of transistors
-on a microchip doubles about every two years. To achieve more smaller
+on a microchip(that used to double about every two years). To achieve more smaller
 chips we have to find new and innovative solutions.
+
+And our project emphasises on one of such innovative approach.
 
 
 Also please READ the project proposal for details..
