@@ -121,4 +121,24 @@ int read(int &type,string s)
 	return data;
 };
 
+
+string reform(string s  , int index){
+	int count=0;
+	int i= s.size()-1;
+    string s_function;   
+    while(s[i]!=' ')
+       {
+           count++;
+           i-=1;
+       }
+    int end = s.size()-count;   
+    for (string::size_type i = 0; i < end; i++) 
+    {
+        string c(1,s[i]);
+        s_function.append(c);
+    } 
+    s_function.append(to_string(index));
+    return s_function;
+}
+
 #endif
