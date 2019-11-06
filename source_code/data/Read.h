@@ -111,7 +111,7 @@ int read(int &type,string s)
        // index of '-' is 
        data=0;
        for (int i=1;i<count;i++){
-       		
+       		data=data*10+((int)s[s.size()-count+i]-48);
        }
 
 
