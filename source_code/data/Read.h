@@ -125,8 +125,10 @@ int read(int &type,string s)
 string reform(string s  , int index){
 	int count=0;
 	int i= s.size()-1;
+	replace( s.begin(), s.end(), '\t', ' ');
+    replace( s.begin(), s.end(), ',', ' ');
     string s_function;   
-    while(s[i]!=' ')
+    while(s[i]!=' ' ||)
        {
            count++;
            i-=1;
