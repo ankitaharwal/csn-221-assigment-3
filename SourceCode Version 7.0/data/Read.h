@@ -166,10 +166,13 @@ bool compareFiles(string f1 ){
 
     for (string::size_type i = 0; i < s1.size(); i++) 
         {
-            if ((int)s1[1] != (int)s2[i]){
+            if ((int)s1[i] != (int)s2[i]){
               //here some differece was found
               printed=true;
-              printf("some mismatch was found at line number %ld , \nstring in file 1 is %s \nstring in file 2 is %s\n\n",count,s1,s2 );
+              printf("some mismatch was found at line number %ld , \n", );
+              printf("\t\tthe mismatch is found in character number %d \n",(i+1) );
+              printf("\t\tfor file 1 the character is %c\n",(char)s1[i] );
+              printf("\t\tfor file 2 the character is %c\n-------------\n",(char)s2[i] );
             }
         }//for loop 
   }//while loop
