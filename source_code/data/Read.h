@@ -10,6 +10,7 @@ int read(int &type,string s)
 {
     if(s[0]=='.' or s[s.size()-1]==':' or s=="syscall")
     {
+    	type =0;
         return 0;
     }
 	// for (string::size_type i = 0; i < s.size(); i++)
@@ -42,9 +43,9 @@ int read(int &type,string s)
         string c(1,s[i]);
         s_function.append(c);
     }
-   string type_2[15]={"addi","addiu","andi","ori","rll","sll","lw","sw","beq","bne","bgt","blt","bge","ble","slti"};
+   string type_2[15]={"addi","addiu","andi","ori","rll","sll","bne","bgt","blt","bge","ble","slti"};//removed beq sw lw
    string type_4[2]={"lui","li"};
-   string type_7[2]={"j","jal"};
+   string type_7[2]={};//removeed j and jal
    for(int i=0;i<15;i++)
    {
        if(type_2[i]==s_function)
@@ -70,6 +71,7 @@ int read(int &type,string s)
        }
    }
    int data=0;
+   
    if(type==2 || type==4 || type==7)
    {
        int i=s.size()-1;
@@ -80,17 +82,43 @@ int read(int &type,string s)
            count++;
            i-=1;
        }
-       for(int i=0;i<count;i++)
-       {
-           int temp=1;
-           for(int j=0;j<count-i-1;j++)
-           {
-               temp*=10;
-           }
-           data+=((int)s[s.size()-count+i]-48)*temp;
+       
+       ///number is 23456 
+       // data = 23
+       // next 4
+       /// data = data*10 + next = 23*10+4=234
+
+       // for(int i=0;i<count;i++)
+       // {
+       //     int temp=1;
+       //     for(int j=0;j<count-i-1;j++)
+       //     {
+       //         temp*=10;
+       //     }
+       //     if ((int)s[s.size()-count+i]== 45){
+       //     	data_is_negative =1 
+       //     }
+       //     else {
+
+       //          data+=((int)s[s.size()-count+i]-48)*temp;
+       //     }
+                  
+           
+       // }
+
+       // string s = fghjk -234
+       //count =4 
+       // index of '-' is 
+       data=0;
+       for (int i=1;i<count;i++){
+       		
        }
+
+
     }
-    return data;
+    if ((char)s[s.size()-count] == '-')
+    	return -1*data;
+	return data;
 };
 
 #endif

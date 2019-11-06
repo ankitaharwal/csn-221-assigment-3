@@ -1,0 +1,43 @@
+	.textyoyo
+	.globl	mainyoyo
+main:yoyo
+	li	$v0,34		# print_string syscall code = 4yoyo
+	la	$a0, msg1	yoyo
+	syscallyoyo
+	li	$v0,5		# read_int syscall code = 5yoyo
+	syscall	yoyo
+	move	$s0,$v0	yoyo
+	li	$s1, 0		# Reg $s1 = counter (i)yoyo
+	li	$s2, 0yoyo
+loop:	yoyo
+	addi	$s1, $s1, 1	yoyo
+	move	$a0, $s2	# Argument 1: sum ($s2)yoyo
+	move	$a1, $s1	# Argument 2: i ($s1)yoyo
+	jal	add2		# Save current PC in $ra, and jump to add2yoyo
+	move	$s2,$v0		# Return value saved in $v0. This is sum ($s2)yoyo
+	beq	$s0, $s1, exit	# if i = N, continueyoyo
+	j	loopyoyo
+exit:	yoyo
+	li	$v0, 4		# print_string syscall code = 4yoyo
+	la	$a0, msg2yoyo
+	syscallyoyo
+	li	$v0,1		# print_string syscall code = 4yoyo
+	move	$a0, $s2yoyo
+	syscallyoyo
+	li	$v0,4		# print_string syscall code = 4yoyo
+	la	$a0, lfyoyo
+	syscallyoyo
+	li	$v0,10		# exityoyo
+	syscallyoyo
+add2:	yoyo
+	addi $sp,$sp, -4	yoyo
+	sw $s0,0($sp)	yoyo
+	add $s0,$a0,$a1	yoyo
+	move $v0,$s0yoyo
+	lw $s0,0($sp)yoyo
+	addi $sp,$sp,4yoyo
+	jr $rayoyo
+	.datayoyo
+msg1:	.asciiz	"Number of integers (N)?  "yoyo
+msg2:	.asciiz	"Sum = "yoyo
+lf:     .asciiz	"\n"yoyo
