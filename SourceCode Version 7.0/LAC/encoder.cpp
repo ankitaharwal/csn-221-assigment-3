@@ -4,7 +4,7 @@ using namespace std;
 
 void lac_encoder(string filename)
 {
-    ifstream file(filename+".txt");
+    ifstream file("../data/"+filename+".txt");
     ofstream file_encoded(filename+"_encoded.txt");
     string s;
     int data;
@@ -12,15 +12,12 @@ void lac_encoder(string filename)
     int index;
     while( getline(file,s))
     {
-        //cout<<s<<endl;
         type=0;
         data=read(type,s);
-        cout<<type<<" "<<data<<endl;
-        //cout<<s<<"->"<<data<<"->"<<type<<endl;
         if(type==2)
         {
             index=write_txt_data(data);
-            s=s+"< 2";//s=reform(s,type,index);
+            s=reform(s,index);
         }              
         file_encoded<<s<<"\n";   
     }       
@@ -30,10 +27,8 @@ void lac_encoder(string filename)
 
 int main() 
 { 
-  lac_encoder("xxx");
-    // string s="syscall";
-    // int type=0;
-    // int data=read(type,s);
-    // cout<<data<<" "<<type<<endl;
+    ofstream file("immediate_data.txt");
+    file.close();
+    lac_encoder("file1");
     return 0; 
 } 
