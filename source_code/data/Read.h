@@ -149,4 +149,34 @@ string reform(string s  , int index){
     return s_function;
 }
 
+
+bool compareFiles(string f1 ){
+
+	ifstream file1(filename+".txt");
+	ifstream file2(filename+"_decoded.txt");
+
+	string s1, s2;
+	long count =0;
+	bool printed = false;
+
+	while (getline(file1,s1)){
+
+		count++;
+		getline(file2,s2);
+
+		for (string::size_type i = 0; i < s1.size(); i++) 
+		    {
+		        if ((int)s1[1] != (int)s2[i]){
+		        	//here some differece was found
+		        	printed=true;
+		        	printf("some mismatch was found at line number %ld , \nstring in file 1 is %s \nstring in file 2 is %s\n\n",count,s1,s2 );
+		        }
+		    }//for loop 
+	}//while loop
+	if (printed)
+		return false;
+	printf("voila no differeces found \n");
+	return true;
+}
+
 #endif
