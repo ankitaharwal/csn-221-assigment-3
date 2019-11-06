@@ -1,4 +1,5 @@
-#include "../data/encoder.h" 
+#include "../data/encoder.h"
+ #include "../data/Read.h"
 using namespace std; 
 
 void lac_decoder(string filename)
@@ -10,12 +11,12 @@ void lac_decoder(string filename)
     {
         //cout<<s<<endl;
         int data;
-        int type=2;
-        int index=rand()%10;//read(type,s);
-        if(type==2)
+        int type=0;
+        int index=read(type,s);
+        if(type==2 || type==4 || type==7)
         {
             data=read_txt_data(index);
-            s=s+"yo";//s=reform(s,type,data);
+            s=reform(s,data);
         }              
         file_decoded<<s<<"\n";   
     }       
@@ -24,6 +25,6 @@ void lac_decoder(string filename)
 }
 int main() 
 { 
-    lac_decoder("xxx");
+    lac_decoder("file1");
     return 0; 
 } 

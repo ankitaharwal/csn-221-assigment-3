@@ -1,0 +1,43 @@
+	.textyo< 2
+	.globl	mainyo< 2
+main:yo< 2
+	li	$v0,34		# print_string syscall code = 4yo< 2
+	la	$a0, msg1	yo< 2
+	syscallyo< 2
+	li	$v0,5		# read_int syscall code = 5yo< 2
+	syscall	yo< 2
+	move	$s0,$v0	yo< 2
+	li	$s1, 0		# Reg $s1 = counter (i)yo< 2
+	li	$s2, 0yo< 2
+loop:	yo< 2
+	addi	$s1, $s1, 1	yo< 2
+	move	$a0, $s2	# Argument 1: sum ($s2)yo< 2
+	move	$a1, $s1	# Argument 2: i ($s1)yo< 2
+	jal	add2		# Save current PC in $ra, and jump to add2yo< 2
+	move	$s2,$v0		# Return value saved in $v0. This is sum ($s2)yo< 2
+	beq	$s0, $s1, exit	# if i = N, continueyo< 2
+	j	loopyo< 2
+exit:	yo< 2
+	li	$v0, 4		# print_string syscall code = 4yo< 2
+	la	$a0, msg2yo< 2
+	syscallyo< 2
+	li	$v0,1		# print_string syscall code = 4yo< 2
+	move	$a0, $s2yo< 2
+	syscallyo< 2
+	li	$v0,4		# print_string syscall code = 4yo< 2
+	la	$a0, lfyo< 2
+	syscallyo< 2
+	li	$v0,10		# exityo< 2
+	syscallyo< 2
+add2:	yo< 2
+	addi $sp,$sp, -4	yo< 2
+	sw $s0,0($sp)	yo< 2
+	add $s0,$a0,$a1	yo< 2
+	move $v0,$s0yo< 2
+	lw $s0,0($sp)yo< 2
+	addi $sp,$sp,4yo< 2
+	jr $rayo< 2
+	.datayo< 2
+msg1:	.asciiz	"Number of integers (N)?  "yo< 2
+msg2:	.asciiz	"Sum = "yo< 2
+lf:     .asciiz	"\n"yo< 2
