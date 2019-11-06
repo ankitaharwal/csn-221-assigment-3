@@ -125,10 +125,16 @@ int read(int &type,string s)
 string reform(string s  , int index){
 	int count=0;
 	int i= s.size()-1;
+	string s_mod;
+	for (string::size_type i = 0; i < s.size(); i++) 
+    {
+        string c(1,s[i]);
+        s_mod.append(c);
+    } 
 	replace( s.begin(), s.end(), '\t', ' ');
     replace( s.begin(), s.end(), ',', ' ');
     string s_function;   
-    while(s[i]!=' ' ||)
+    while(s[i]!=' ' )
        {
            count++;
            i-=1;
@@ -136,7 +142,7 @@ string reform(string s  , int index){
     int end = s.size()-count;   
     for (string::size_type i = 0; i < end; i++) 
     {
-        string c(1,s[i]);
+        string c(1,s_mod[i]);
         s_function.append(c);
     } 
     s_function.append(to_string(index));
