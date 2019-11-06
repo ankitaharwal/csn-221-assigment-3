@@ -71,11 +71,11 @@ int read(int &type,string s)
        }
    }
    int data=0;
-   
+   int count=0;
    if(type==2 || type==4 || type==7)
    {
        int i=s.size()-1;
-       int count=0;
+       
        while(s[i]!=' ')
        {
            //cout<<s[i]<<endl;
