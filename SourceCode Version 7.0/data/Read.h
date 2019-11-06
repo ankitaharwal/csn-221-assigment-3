@@ -150,6 +150,37 @@ string reform(string s  , int index){
 }
 
 
+string reform(string s , int index , bool encoded){
+  int count=0;
+  int i= s.size()-1;
+  string s_mod;
+  for (string::size_type i = 0; i < s.size(); i++) 
+    {
+        string c(1,s[i]);
+        s_mod.append(c);
+    } 
+  replace( s.begin(), s.end(), '\t', ' ');
+    replace( s.begin(), s.end(), ',', ' ');
+    string s_function;   
+    while(s[i]!=' ' )
+       {
+           count++;
+           i-=1;
+       }
+    int end = s.size()-count;   
+    for (string::size_type i = 0; i < end; i++) 
+    {
+        string c(1,s_mod[i]);
+        s_function.append(c);
+    } 
+    if (encoded)
+      s_function.append(" Y ");
+    else 
+      s_function.append(" N ");
+    s_function.append(to_string(index));
+    return s_function;
+}
+
 bool compareFiles(string f1 ){
 
   ifstream file1(filename+".txt");
