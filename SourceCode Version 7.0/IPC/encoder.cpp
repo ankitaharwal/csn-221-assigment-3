@@ -4,6 +4,8 @@ using namespace std;
 
 
 void doTheOptimisation(std::vector<int> arr , char const *filename){
+    if (arr.size()==0)
+    	return;
     vector<int> arr_set;//to be used as set for immediate values
 
     // sort all the immediate values obtained  
@@ -130,8 +132,11 @@ void ipc_encoder(string filename)
 
     file.close();
 
+    if (arr2.size()!=0)
     doTheOptimisation(arr2,"immediate_data_2.txt");
+	if (arr4.size()!=0)
     doTheOptimisation(arr4,"immediate_data_4.txt");
+	if (arr7.size()!=0)
     doTheOptimisation(arr7,"immediate_data_7.txt");
     
     
