@@ -6,6 +6,133 @@
 #include <string.h>
 #include <bits/stdc++.h> 
 using namespace std;
+
+bool read (string s ,int& data_ret , int&type ){
+  if(s[0]=='.' or s[s.size()-1]==':' or s=="syscall")
+    {
+        type =0;
+        data_ret =0;
+        return false;
+    }
+    replace( s.begin(), s.end(), '\t', ' ');
+    replace( s.begin(), s.end(), ',', ' ');
+    int start=-1;
+    int end=-1;
+    
+    for (string::size_type i = 0; i < s.size(); i++) 
+    {
+        if(s[i]!=' ' && start==-1)
+        {
+            start=i;
+            break;
+        }
+    }
+    for (string::size_type i = start; i < s.size(); i++) 
+    {
+        if(s[i]==' ')
+        {
+            end=i;
+            break;
+        }
+    }
+
+
+    string s_function;
+    for (string::size_type i = start; i < end; i++) 
+    {
+        string c(1,s[i]);
+        s_function.append(c);
+    }
+    string type_2[15]={"addi","addiu","andi","ori","rll","sll","bne","bgt","blt","bge","ble","slti"};//removed beq sw lw
+    string type_4[2]={"lui","li"};
+    string type_7[2]={};//removeed j and jal
+    for(int i=0;i<15;i++)
+    {
+       if(type_2[i]==s_function)
+       {
+           type=2;
+           break;
+       }
+    }
+    for(int i=0;i<2;i++)
+    {
+       if(type_4[i]==s_function)
+       {
+           type=4;
+           break;
+       }
+    }
+    for(int i=0;i<2;i++)
+    {
+       if(type_7[i]==s_function)
+       {
+           type=7;
+           break;
+       }
+    }
+
+   bool encoded;
+    int data=0;
+   int data_is_negative=0;
+   if(type==2 || type==4 || type==7)
+   {
+       int i=s.size()-1;
+       int count=0;
+       while(s[i]!=' ')
+       {
+           //cout<<s[i]<<endl;
+           count++;
+           i-=1;
+       }
+       while(s[i]==' '){
+        i--;
+       }
+       if (s[i]=='Y'){
+        encoded = true;
+       }
+       else 
+        encoded =false;
+       
+       for(int i=0;i<count;i++)
+       {
+           int temp=1;
+           for(int j=0;j<count-i-1;j++)
+           {
+               temp*=10;
+           }
+           if((int)s[s.size()-count+i]==45)
+           {
+               data_is_negative=1;
+           }
+           else
+           {
+                data+=((int)s[s.size()-count+i]-48)*temp;
+           }           
+       }
+    }
+    if(data_is_negative==1)
+    {
+        data_ret = -1*data;
+    }
+    data_ret = data;
+
+    return encoded;
+
+}//method ends
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 int read(int &type,string s)
 {
     if(s[0]=='.' or s[s.size()-1]==':' or s=="syscall")
@@ -105,6 +232,34 @@ int read(int &type,string s)
     }
     return data;
 };
+
+
+string reformV2(string s  , int index){
+  int count=0;
+  int i= s.size()-1;
+  string s_mod;
+  for (string::size_type i = 0; i < s.size(); i++) 
+    {
+        string c(1,s[i]);
+        s_mod.append(c);
+    } 
+  replace( s.begin(), s.end(), '\t', ' ');
+    replace( s.begin(), s.end(), ',', ' ');
+    string s_function;   
+    while(s[i]!=' ' )
+       {
+           count++;
+           i-=1;
+       }
+    int end = s.size()-count-3;   
+    for (string::size_type i = 0; i < end; i++) 
+    {
+        string c(1,s_mod[i]);
+        s_function.append(c);
+    } 
+    s_function.append(to_string(index));
+    return s_function;
+}
 
 
 string reform(string s  , int index){

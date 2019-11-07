@@ -9,13 +9,22 @@ void lac_decoder(string filename)
     string s;
     while( getline(file,s))
     {
-        int data;
+        int data=0;
         int type=0;
-        int index=read(type,s);
+        bool encoded = read(s, data ,type);
+
+        
         if(type==2)
         {
-            data=read_txt_data(index);
-            s=reform(s,data);
+            if (encoded){
+                //here the initial value of data is index indeed
+                data=read_txt_data(data);
+                s=reformV2(s,data);
+            }
+            else {
+                s=reformV2(s,data);
+            }
+            
         }              
         file_decoded<<s<<"\n";   
     }       
