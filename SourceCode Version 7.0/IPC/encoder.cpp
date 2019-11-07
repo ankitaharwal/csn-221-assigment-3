@@ -3,7 +3,7 @@
 using namespace std; 
 
 
-void doTheOptimisation(std::vector<int> arr , string filename){
+void doTheOptimisation(std::vector<int> arr , char const *filename){
     vector<int> arr_set;//to be used as set for immediate values
 
     // sort all the immediate values obtained  

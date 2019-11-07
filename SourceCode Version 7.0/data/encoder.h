@@ -85,7 +85,7 @@ void update_txt_data(vector<int> arr_data)
 void update_txt_data(vector<int> arr_data,char const *filename)
 {
     ofstream myfile;
-    myfile.open ("immediate_data_"+filename+".txt");               
+    myfile.open (filename);               
     for(int i=0;i<arr_data.size();i++)
     {
         myfile<<arr_data.at(i)<<"\n";   

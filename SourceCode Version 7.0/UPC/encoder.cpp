@@ -2,7 +2,7 @@
 #include "../data/Read.h" 
 using namespace std; 
 
-void lpc_encoder(string filename)
+void upc_encoder(string filename)
 {
     ifstream file("../data/"+filename+".txt");
     ofstream file_encoded(filename+"_encoded.txt");
@@ -136,6 +136,6 @@ int main()
 { 
     ofstream file("immediate_data.txt");
     file.close();
-    lpc_encoder("file1");
+    upc_encoder("file1");
     return 0; 
 } 

@@ -2,7 +2,7 @@
  #include "../data/Read.h"
 using namespace std; 
 
-void lac_decoder(string filename)
+void lpc_decoder(string filename)
 {
     ifstream file(filename+"_encoded.txt");
     ofstream file_decoded(filename+"_decoded.txt");
@@ -33,7 +33,7 @@ void lac_decoder(string filename)
 }
 int main() 
 { 
-    lac_decoder("file1");
+    lpc_decoder("file1");
     // cout<<"comparing two files"<<endl;
     // compareFiles("file1");
     return 0; 
