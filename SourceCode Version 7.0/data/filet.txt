@@ -1,0 +1,319 @@
+	.text
+	.globl	main
+main:
+	li	$v0,301		# print_string syscall code = 4
+	la	$a0, msg1	
+	syscall
+	li	$v0,502		# read_int syscall code = 5
+	syscall	
+	move	$s0,$v0	
+	li	$s1, 203		# Reg $s1 = counter (i)
+	li	$s2, 204
+loop:	
+	addi	$s1, $s1, 1	
+	move	$a0, $s2	# Argument 1: sum ($s2)
+	move	$a1, $s1	# Argument 2: i ($s1)
+	jal	add2		# Save current PC in $ra, and jump to add2
+	move	$s2,$v0		# Return value saved in $v0. This is sum ($s2)
+	beq	$s0, $s1, exit	# if i = N, continue
+	j	loop
+exit:	
+	li	$v0, 4		# print_string syscall code = 4
+	la	$a0, msg2
+	syscall
+	li	$v0,107		# print_string syscall code = 4
+	move	$a0, $s2
+	syscall
+	li	$v0,404		# print_string syscall code = 4
+	la	$a0, lf
+	syscall
+	li	$v0,104		# exit
+	syscall
+add2:	
+	addi $sp,$sp, 4	
+	sw $s0,0($sp)	
+	add $s0,$a0,$a1	
+	move $v0,$s0
+	lw $s0,0($sp)
+	addi $sp,$sp,404
+	jr $ra
+	.data
+main:
+	li	$v0,303		# print_string syscall code = 4
+	la	$a0, msg1	
+	syscall
+	li	$v0,511		# read_int syscall code = 5
+	syscall	
+	move	$s0,$v0	
+	li	$s1, 110		# Reg $s1 = counter (i)
+	li	$s2, 120
+loop:	
+	addi	$s1, $s1, 1	
+	move	$a0, $s2	# Argument 1: sum ($s2)
+	move	$a1, $s1	# Argument 2: i ($s1)
+	jal	add2		# Save current PC in $ra, and jump to add2
+	move	$s2,$v0		# Return value saved in $v0. This is sum ($s2)
+	beq	$s0, $s1, exit	# if i = N, continue
+	j	loop
+exit:	
+	li	$v0, 440		# print_string syscall code = 4
+	la	$a0, msg2
+	syscall
+	li	$v0,101		# print_string syscall code = 4
+	move	$a0, $s2
+	syscall
+	li	$v0,404		# print_string syscall code = 4
+	la	$a0, lf
+	syscall
+	li	$v0,101		# exit
+	syscall
+add2:	
+	addi $sp,$sp, 4	
+	sw $s0,0($sp)	
+	add $s0,$a0,$a1	
+	move $v0,$s0
+	lw $s0,0($sp)
+	addi $sp,$sp,400
+	jr $ra
+	.data
+main:
+	li	$v0,301		# print_string syscall code = 4
+	la	$a0, msg1	
+	syscall
+	li	$v0,502		# read_int syscall code = 5
+	syscall	
+	move	$s0,$v0	
+	li	$s1, 2		# Reg $s1 = counter (i)
+	li	$s2, 234
+loop:	
+	addi	$s1, $s1, 1	
+	move	$a0, $s2	# Argument 1: sum ($s2)
+	move	$a1, $s1	# Argument 2: i ($s1)
+	jal	add2		# Save current PC in $ra, and jump to add2
+	move	$s2,$v0		# Return value saved in $v0. This is sum ($s2)
+	beq	$s0, $s1, exit	# if i = N, continue
+	j	loop
+exit:	
+	li	$v0, 4		# print_string syscall code = 4
+	la	$a0, msg2
+	syscall
+	li	$v0,107		# print_string syscall code = 4
+	move	$a0, $s2
+	syscall
+	li	$v0,2		# print_string syscall code = 4
+	la	$a0, lf
+	syscall
+	li	$v0,1		# exit
+	syscall
+add2:	
+	addi $sp,$sp, 4	
+	sw $s0,0($sp)	
+	add $s0,$a0,$a1	
+	move $v0,$s0
+	lw $s0,0($sp)
+	addi $sp,$sp,4
+	jr $ra
+	.data
+main:
+	li	$v0,3		# print_string syscall code = 4
+	la	$a0, msg1	
+	syscall
+	li	$v0,511		# read_int syscall code = 5
+	syscall	
+	move	$s0,$v0	
+	li	$s1, 110		# Reg $s1 = counter (i)
+	li	$s2, 120
+loop:	
+	addi	$s1, $s1, 1	
+	move	$a0, $s2	# Argument 1: sum ($s2)
+	move	$a1, $s1	# Argument 2: i ($s1)
+	jal	add2		# Save current PC in $ra, and jump to add2
+	move	$s2,$v0		# Return value saved in $v0. This is sum ($s2)
+	beq	$s0, $s1, exit	# if i = N, continue
+	j	loop
+exit:	
+	li	$v0, 4		# print_string syscall code = 4
+	la	$a0, msg2
+	syscall
+	li	$v0,1		# print_string syscall code = 4
+	move	$a0, $s2
+	syscall
+	li	$v0,2		# print_string syscall code = 4
+	la	$a0, lf
+	syscall
+	li	$v0,3		# exit
+	syscall
+add2:	
+	addi $sp,$sp, 1
+	sw $s0,0($sp)	
+	add $s0,$a0,$a1	
+	move $v0,$s0
+	lw $s0,0($sp)
+	addi $sp,$sp,0
+	jr $ra
+	.data
+
+
+
+
+
+
+
+
+
+main:
+	li	$v0,303		# print_string syscall code = 4
+	la	$a0, msg1	
+	syscall
+	li	$v0,501		# read_int syscall code = 5
+	syscall	
+	move	$s0,$v0	
+	li	$s1, 213		# Reg $s1 = counter (i)
+	li	$s2, 224
+loop:	
+	addi	$s1, $s1, 12	
+	move	$a0, $s2	# Argument 1: sum ($s2)
+	move	$a1, $s1	# Argument 2: i ($s1)
+	jal	add2		# Save current PC in $ra, and jump to add2
+	move	$s2,$v0		# Return value saved in $v0. This is sum ($s2)
+	beq	$s0, $s1, exit	# if i = N, continue
+	j	loop
+exit:	
+	li	$v0, 401		# print_string syscall code = 4
+	la	$a0, msg2
+	syscall
+	li	$v0,117		# print_string syscall code = 4
+	move	$a0, $s2
+	syscall
+	li	$v0,424		# print_string syscall code = 4
+	la	$a0, lf
+	syscall
+	li	$v0,114		# exit
+	syscall
+add2:	
+	addi $sp,$sp, 40	
+	sw $s0,0($sp)	
+	add $s0,$a0,$a1	
+	move $v0,$s0
+	lw $s0,0($sp)
+	addi $sp,$sp,414
+	jr $ra
+	.data
+main:
+	li	$v0,323		# print_string syscall code = 4
+	la	$a0, msg1	
+	syscall
+	li	$v0,531		# read_int syscall code = 5
+	syscall	
+	move	$s0,$v0	
+	li	$s1, 1010		# Reg $s1 = counter (i)
+	li	$s2, 1020
+loop:	
+	addi	$s1, $s1, 10	
+	move	$a0, $s2	# Argument 1: sum ($s2)
+	move	$a1, $s1	# Argument 2: i ($s1)
+	jal	add2		# Save current PC in $ra, and jump to add2
+	move	$s2,$v0		# Return value saved in $v0. This is sum ($s2)
+	beq	$s0, $s1, exit	# if i = N, continue
+	j	loop
+exit:	
+	li	$v0, 4040		# print_string syscall code = 4
+	la	$a0, msg2
+	syscall
+	li	$v0,1011		# print_string syscall code = 4
+	move	$a0, $s2
+	syscall
+	li	$v0,40		# print_string syscall code = 4
+	la	$a0, lf
+	syscall
+	li	$v0,11		# exit
+	syscall
+add2:	
+	addi $sp,$sp, 41	
+	sw $s0,0($sp)	
+	add $s0,$a0,$a1	
+	move $v0,$s0
+	lw $s0,0($sp)
+	addi $sp,$sp,40
+	jr $ra
+	.data
+main:
+	li	$v0,31		# print_string syscall code = 4
+	la	$a0, msg1	
+	syscall
+	li	$v0,52		# read_int syscall code = 5
+	syscall	
+	move	$s0,$v0	
+	li	$s1, 20		# Reg $s1 = counter (i)
+	li	$s2, 4
+loop:	
+	addi	$s1, $s1, 1	
+	move	$a0, $s2	# Argument 1: sum ($s2)
+	move	$a1, $s1	# Argument 2: i ($s1)
+	jal	add2		# Save current PC in $ra, and jump to add2
+	move	$s2,$v0		# Return value saved in $v0. This is sum ($s2)
+	beq	$s0, $s1, exit	# if i = N, continue
+	j	loop
+exit:	
+	li	$v0, 4		# print_string syscall code = 4
+	la	$a0, msg2
+	syscall
+	li	$v0,137		# print_string syscall code = 4
+	move	$a0, $s2
+	syscall
+	li	$v0,20		# print_string syscall code = 4
+	la	$a0, lf
+	syscall
+	li	$v0,11		# exit
+	syscall
+add2:	
+	addi $sp,$sp, 41	
+	sw $s0,0($sp)	
+	add $s0,$a0,$a1	
+	move $v0,$s0
+	lw $s0,0($sp)
+	addi $sp,$sp,41
+	jr $ra
+	.data
+main:
+	li	$v0,31		# print_string syscall code = 4
+	la	$a0, msg1	
+	syscall
+	li	$v0,5101		# read_int syscall code = 5
+	syscall	
+	move	$s0,$v0	
+	li	$s1, 1110		# Reg $s1 = counter (i)
+	li	$s2, 2120
+loop:	
+	addi	$s1, $s1, 10	
+	move	$a0, $s2	# Argument 1: sum ($s2)
+	move	$a1, $s1	# Argument 2: i ($s1)
+	jal	add2		# Save current PC in $ra, and jump to add2
+	move	$s2,$v0		# Return value saved in $v0. This is sum ($s2)
+	beq	$s0, $s1, exit	# if i = N, continue
+	j	loop
+exit:	
+	li	$v0, 41		# print_string syscall code = 4
+	la	$a0, msg2
+	syscall
+	li	$v0,1		# print_string syscall code = 4
+	move	$a0, $s2
+	syscall
+	li	$v0,2		# print_string syscall code = 4
+	la	$a0, lf
+	syscall
+	li	$v0,9		# exit
+	syscall
+add2:	
+	addi $sp,$sp, 10
+	sw $s0,0($sp)	
+	add $s0,$a0,$a1	
+	move $v0,$s0
+	lw $s0,0($sp)
+	addi $sp,$sp,0
+	jr $ra
+	.data
+
+msg1:	.asciiz	"Number of integers (N)?  "
+msg2:	.asciiz	"Sum = "
+lf:     .asciiz	"\n"
