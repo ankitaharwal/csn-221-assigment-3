@@ -1,0 +1,114 @@
+.text
+.globl multMatrices
+multiply:
+sw   $fp, -4($sp)
+la   $fp, -4($sp)
+sw   $ra, -4($fp)
+sw   $s0, -8($fp)
+sw   $s1, -12($fp)
+sw   $s2, -16($fp)
+sw   $s3, -20($fp)
+sw   $s4, -24($fp)
+sw   $s5, -28($fp)
+sw   $s6, -32($fp)
+addi $sp, $sp, -36
+move $s0, $a0
+move $s1, $a1
+move $s2, $a2
+li   $s3, 0
+li   $t0, 4
+mult_loop:
+bge  $s3, $s0, mult_end
+li   $s4, 0
+mult_loop2:
+bge  $s4, $s2, mult_end2
+li   $s6, 0
+j    mult_loop3
+mult_store:
+mul  $t3, $s3, $s2
+mul  $t3, $t3, $t0
+mul  $t4, $s4, $t0
+add  $t3, $t3, $t4
+sw   $s6, C($t3)
+addi $s4, $s4, 1
+li   $s5, 0
+j    mult_loop2
+mult_loop3:
+bge  $s5, $s1, mult_store
+mul  $t5, $s3, $s1
+mul  $t5, $t5, $t0
+mul  $t6, $s5, $t0
+add  $t5, $t5, $t6
+lw   $t5, A($t5)
+mul  $t7, $s5, $s2
+mul  $t7, $t7, $t0
+mul  $t8, $s4, $t0
+add  $t7, $t7, $t8
+lw   $t7, B($t7)
+mul  $t7, $t5, $t7
+add  $s6, $s6, $t7
+addi $s5, $s5, 1
+j    mult_loop3
+mult_end2:
+addi $s3, $s3, 1
+j    mult_loop
+mult_end:
+lw   $ra, -4($fp)
+lw   $s0, -8($fp)
+lw   $s1, -12($fp)
+lw   $s2, -16($fp)
+lw   $s3, -20($fp)
+lw   $s4, -24($fp)
+lw   $s5, -28($fp)
+lw   $s6, -32($fp)
+la   $sp, 4($fp)
+lw   $fp, ($fp)
+jr   $ra
+lw   $a0, N
+lw   $a1, M
+lw   $a2, P
+jal  multiply
+nop
+.text
+.globl main
+main:
+li $v0,34
+la $a0, msg1
+syscall
+li $v0,5
+syscall
+move $s0,$v0
+li $s1, 0
+li $s2, 0
+loop:
+addi $s1, $s1, 1
+move $a0, $s2
+move $a1, $s1
+jal add2
+move $s2,$v0
+beq $s0, $s1, exit
+j loop
+exit:
+li $v0, 4
+la $a0, msg2
+syscall
+li $v0,1
+move $a0, $s2
+syscall
+li $v0,4
+la $a0, lf
+syscall
+li $v0,10
+syscall
+add2:
+addi $sp,$sp, -4
+sw $s0,0($sp)
+add $s0,$a0,$a1
+move $v0,$s0
+lw $s0,0($sp)
+addi $sp,$sp,4
+jr $ra
+.data
+msg1: .asciiz "Number of integers (N)?  "
+msg2: .asciiz "Sum = "
+lf:     .asciiz "\n"

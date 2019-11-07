@@ -105,7 +105,7 @@ int write_txt_data(int n)
     fclose(myfile);   
     return i;   
 }
-int write_txt_data(int n,char *filename)
+int write_txt_data(int n,char const *filename)
 {
     int i=0;
     int a;
@@ -140,7 +140,7 @@ int read_txt_data(int i)
     }   while( i-- > 0);
     return a;  
 }
-int read_txt_data(int i,char *filename)
+int read_txt_data(int i,char const *filename)
 {
     ifstream file(filename);
     int a;
@@ -149,7 +149,18 @@ int read_txt_data(int i,char *filename)
     }   while( i-- > 0);
     return a;  
 }
-
+int number_of_values(char const *filename)
+{
+    int a;
+    int i=0;
+    ifstream infile("immediate_data.txt");
+    while(infile>>a)
+    {
+        i++;
+    }
+    infile.close();
+    return i;
+}
 
 
 #endif
