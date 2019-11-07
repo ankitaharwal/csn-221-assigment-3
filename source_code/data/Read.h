@@ -8,26 +8,26 @@
 using namespace std;
 int read(int &type,string s)
 {
-    if(s[0]=='.' or s[s.size()-1]==':' or s=="syscall" or s=="nop" or s=="bge")
+    if(s[0]=='.' or s[s.size()-1]==':' or s=="syscall")
     {
         return 0;
     }
-	// for (string::size_type i = 0; i < s.size(); i++)
-	// {
-	// 	cout<<s[i];
-	// }
-	replace( s.begin(), s.end(), '\t', ' ');
+  // for (string::size_type i = 0; i < s.size(); i++)
+  // {
+  //  cout<<s[i];
+  // }
+    replace( s.begin(), s.end(), '\t', ' ');
     replace( s.begin(), s.end(), ',', ' ');
     int start=-1;
     int end=-1;
-	for (string::size_type i = 0; i < s.size(); i++) 
+  for (string::size_type i = 0; i < s.size(); i++) 
     {
         if(s[i]!=' ' && start==-1)
         {
             start=i;
             break;
         }
-	}
+  }
     for (string::size_type i = start; i < s.size(); i++) 
     {
         if(s[i]==' ')
@@ -35,14 +35,14 @@ int read(int &type,string s)
             end=i;
             break;
         }
-	}
+  }
     string s_function;
     for (string::size_type i = start; i < end; i++) 
     {
         string c(1,s[i]);
         s_function.append(c);
     }
-   string type_2[15]={"addi","addiu","andi","ori","rll","sll","bne","bgt","blt","ble","slti","sw","la"};//removed beq bge lw added la
+   string type_2[15]={"addi","addiu","andi","ori","rll","sll","bne","bgt","blt","bge","ble","slti"};//removed beq sw lw
    string type_4[2]={"lui","li"};
    string type_7[2]={};//removeed j and jal
    for(int i=0;i<15;i++)
@@ -73,13 +73,8 @@ int read(int &type,string s)
    int data_is_negative=0;
    if(type==2 || type==4 || type==7)
    {
-       if(s_function=="sw" or s_function=="la")
-       {
-            s.erase(s.size()-1-4,s.size()-1)   ;
-       }
        int i=s.size()-1;
        int count=0;
-       
        while(s[i]!=' ')
        {
            //cout<<s[i]<<endl;
@@ -110,16 +105,18 @@ int read(int &type,string s)
     }
     return data;
 };
+
+
 string reform(string s  , int index){
-	int count=0;
-	int i= s.size()-1;
-	string s_mod;
-	for (string::size_type i = 0; i < s.size(); i++) 
+  int count=0;
+  int i= s.size()-1;
+  string s_mod;
+  for (string::size_type i = 0; i < s.size(); i++) 
     {
         string c(1,s[i]);
         s_mod.append(c);
     } 
-	replace( s.begin(), s.end(), '\t', ' ');
+  replace( s.begin(), s.end(), '\t', ' ');
     replace( s.begin(), s.end(), ',', ' ');
     string s_function;   
     while(s[i]!=' ' )
@@ -136,6 +133,8 @@ string reform(string s  , int index){
     s_function.append(to_string(index));
     return s_function;
 }
+
+
 string reform(string s , int index , bool encoded){
   int count=0;
   int i= s.size()-1;
@@ -198,4 +197,5 @@ bool compareFiles(string filename ){
   printf("voila no differeces found \n");
   return true;
 }
+
 #endif

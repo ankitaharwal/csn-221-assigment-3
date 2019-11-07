@@ -82,6 +82,31 @@ void update_txt_data(vector<int> arr_data)
     myfile.close();
 }
 
+
+
+int scan_txt_data(int n)
+{
+    int i=0;
+    int a;
+    //vector<int> arr_data;
+    ifstream infile("immediate_data.txt");
+    while(infile>>a)
+    {
+        //arr_data.push_back(a);
+        if(n==a)
+        {
+            return i;
+        }
+        i++;
+    }
+    infile.close();
+
+    // if we come here it means value was found in encoded values 
+    //hence we will print it as it is 
+    return -1;
+}
+
+
 ////this is used for giving or tending O(1) complexity to the overall encoding function in sequence
 int write_txt_data(int n)
 {
@@ -105,6 +130,8 @@ int write_txt_data(int n)
     fclose(myfile);   
     return i;   
 }
+
+
 int write_txt_data(int n,char const *filename)
 {
     int i=0;
