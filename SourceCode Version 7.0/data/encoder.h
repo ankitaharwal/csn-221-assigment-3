@@ -82,7 +82,39 @@ void update_txt_data(vector<int> arr_data)
     myfile.close();
 }
 
+void update_txt_data(vector<int> arr_data,char const *filename)
+{
+    ofstream myfile;
+    myfile.open ("immediate_data_"+filename+".txt");               
+    for(int i=0;i<arr_data.size();i++)
+    {
+        myfile<<arr_data.at(i)<<"\n";   
+    }       
+    myfile.close();
+}
 
+
+int scan_txt_data(int n,char const *filename)
+{
+    int i=0;
+    int a;
+    //vector<int> arr_data;
+    ifstream infile(filename);
+    while(infile>>a)
+    {
+        //arr_data.push_back(a);
+        if(n==a)
+        {
+            return i;
+        }
+        i++;
+    }
+    infile.close();
+
+    // if we come here it means value was found in encoded values 
+    //hence we will print it as it is 
+    return -1;
+}
 
 int scan_txt_data(int n)
 {
