@@ -2,7 +2,7 @@
  #include "../data/Read.h"
 using namespace std; 
 
-void lac_decoder(string filename)
+void iac_decoder(string filename)
 {
     ifstream file(filename+"_encoded.txt");
     ofstream file_decoded(filename+"_decoded.txt");
@@ -35,6 +35,6 @@ void lac_decoder(string filename)
 }
 int main() 
 { 
-    lac_decoder("file1");
+    iac_decoder("file1");
     return 0; 
 } 

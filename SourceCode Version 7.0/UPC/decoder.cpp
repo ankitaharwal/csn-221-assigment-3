@@ -2,7 +2,7 @@
  #include "../data/Read.h"
 using namespace std; 
 
-void lpc_decoder(string filename)
+void upc_decoder(string filename)
 {
     ifstream file(filename+"_encoded.txt");
     ofstream file_decoded(filename+"_decoded.txt");
@@ -14,7 +14,7 @@ void lpc_decoder(string filename)
         bool encoded = read(s, data ,type);
 
         
-        if(type==2)
+        if(type==2 || type==4 || type==7)
         {
             if (encoded){
                 //here the initial value of data is index indeed
@@ -33,7 +33,7 @@ void lpc_decoder(string filename)
 }
 int main() 
 { 
-    lpc_decoder("file1");
+    upc_decoder("file1");
     // cout<<"comparing two files"<<endl;
     // compareFiles("file1");
     return 0; 

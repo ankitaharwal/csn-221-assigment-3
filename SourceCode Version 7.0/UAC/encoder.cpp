@@ -2,7 +2,7 @@
 #include "../data/Read.h" 
 using namespace std; 
 
-void lac_encoder(string filename)
+void uac_encoder(string filename)
 {
     ifstream file("../data/"+filename+".txt");
     ofstream file_encoded(filename+"_encoded.txt");
@@ -31,6 +31,6 @@ int main()
 { 
     ofstream file("immediate_data.txt");
     file.close();
-  lac_encoder("file1");
+  uac_encoder("file1");
     return 0; 
 } 
