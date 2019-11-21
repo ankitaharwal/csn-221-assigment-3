@@ -34,7 +34,7 @@ void upc_decoder(string filename)
 int main() 
 { 
     upc_decoder("file1");
-    // cout<<"comparing two files"<<endl;
-    // compareFiles("file1");
+    cout<<"comparing two files"<<endl;
+    compareFiles("file1");
     return 0; 
 } 

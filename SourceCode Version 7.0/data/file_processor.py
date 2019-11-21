@@ -1,4 +1,4 @@
-f=open("filet.txt",'r+')
+f=open("file_1.txt",'r+')
 l=f.readlines()
 for i in range(len(l)):
    try:

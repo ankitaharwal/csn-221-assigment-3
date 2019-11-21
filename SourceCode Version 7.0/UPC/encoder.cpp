@@ -51,11 +51,11 @@ void upc_encoder(string filename)
 
 
     //printing set valuess
-    for(int i=0;i<arr_set.size();i++)
-    {
-        cout<<arr_set.at(i)<<" ";
-    }
-    cout<<endl;
+    // for(int i=0;i<arr_set.size();i++)
+    // {
+    //     cout<<arr_set.at(i)<<" ";
+    // }
+    // cout<<endl;
     //done
 
 
@@ -86,18 +86,18 @@ void upc_encoder(string filename)
         if (new_bits==0)new_bits=1;
 
         //displaying the element in terminal
-        printf("%d  %d  %d  ",arr_set.at(i), data_bits , new_bits);
+        // printf("%d  %d  %d  ",arr_set.at(i), data_bits , new_bits);
 
         if (new_bits<data_bits){
             //the number should be encoded and hence continue
-            printf(" encoded\n");
+            // printf(" encoded\n");
             //the value that is to be encoded will be now be pushed to arr to set into immediate values
             arr.push_back(arr_set.at(i));
 
             //break;
         }
         else {
-            printf(" not encoded\n");
+            // printf(" not encoded\n");
             //this will not be anyhow put in our immediate_data.txt file
         }
 
@@ -106,7 +106,7 @@ void upc_encoder(string filename)
 
     }
 
-    cout<<"finally encoded data will take bits :"<<new_bits<<endl;
+    // cout<<"finally encoded data will take bits :"<<new_bits<<endl;
     
     //let's encode
     file.open("../data/"+filename+".txt");

@@ -34,7 +34,7 @@ void lpc_decoder(string filename)
 int main() 
 { 
     lpc_decoder("file1");
-    // cout<<"comparing two files"<<endl;
-    // compareFiles("file1");
+    cout<<"comparing two files"<<endl;
+    compareFiles("file1");
     return 0; 
 } 

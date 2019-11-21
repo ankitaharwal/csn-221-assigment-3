@@ -1,168 +1,16 @@
 .text
 .globl main
 main:
-li $v0,301
-la $a0, msg1
-syscall
-li $v0,502
-syscall
-move $s0,$v0
-li $s1, 203
-li $s2, 204
-loop:
-addi $s1, $s1, 1
-move $a0, $s2
-move $a1, $s1
-jal add2
-move $s2,$v0
-beq $s0, $s1, exit
-j loop
-exit:
-li $v0, 4
-la $a0, msg2
-syscall
-li $v0,107
-move $a0, $s2
-syscall
-li $v0,404
-la $a0, lf
-syscall
-li $v0,104
-syscall
-add2:
-addi $sp,$sp, 4
-sw $s0,0($sp)
-add $s0,$a0,$a1
-move $v0,$s0
-lw $s0,0($sp)
-addi $sp,$sp,404
-jr $ra
-.data
-main:
-li $v0,303
-la $a0, msg1
-syscall
-li $v0,511
-syscall
-move $s0,$v0
-li $s1, 110
-li $s2, 120
-loop:
-addi $s1, $s1, 1
-move $a0, $s2
-move $a1, $s1
-jal add2
-move $s2,$v0
-beq $s0, $s1, exit
-j loop
-exit:
-li $v0, 440
-la $a0, msg2
-syscall
-li $v0,101
-move $a0, $s2
-syscall
-li $v0,404
-la $a0, lf
-syscall
-li $v0,101
-syscall
-add2:
-addi $sp,$sp, 4
-sw $s0,0($sp)
-add $s0,$a0,$a1
-move $v0,$s0
-lw $s0,0($sp)
-addi $sp,$sp,400
-jr $ra
-.data
-main:
-li $v0,301
-la $a0, msg1
-syscall
-li $v0,502
-syscall
-move $s0,$v0
-li $s1, 2
-li $s2, 234
-loop:
-addi $s1, $s1, 1
-move $a0, $s2
-move $a1, $s1
-jal add2
-move $s2,$v0
-beq $s0, $s1, exit
-j loop
-exit:
-li $v0, 4
-la $a0, msg2
-syscall
-li $v0,107
-move $a0, $s2
-syscall
-li $v0,2
-la $a0, lf
-syscall
-li $v0,1
-syscall
-add2:
-addi $sp,$sp, 4
-sw $s0,0($sp)
-add $s0,$a0,$a1
-move $v0,$s0
-lw $s0,0($sp)
-addi $sp,$sp,4
-jr $ra
-.data
-main:
-li $v0,3
-la $a0, msg1
-syscall
-li $v0,511
-syscall
-move $s0,$v0
-li $s1, 110
-li $s2, 120
-loop:
-addi $s1, $s1, 1
-move $a0, $s2
-move $a1, $s1
-jal add2
-move $s2,$v0
-beq $s0, $s1, exit
-j loop
-exit:
-li $v0, 4
-la $a0, msg2
-syscall
-li $v0,1
-move $a0, $s2
-syscall
-li $v0,2
-la $a0, lf
-syscall
-li $v0,3
-syscall
-add2:
-addi $sp,$sp, 1
-sw $s0,0($sp)
-add $s0,$a0,$a1
-move $v0,$s0
-lw $s0,0($sp)
-addi $sp,$sp,0
-jr $ra
-.data
-main:
-li $v0,303
+li $v0,3401
 la $a0, msg1
 syscall
 li $v0,501
 syscall
 move $s0,$v0
-li $s1, 213
-li $s2, 224
+li $s1, 10
+li $s2, 10
 loop:
-addi $s1, $s1, 12
+addi $s1, $s1, 11
 move $a0, $s2
 move $a1, $s1
 jal add2
@@ -170,75 +18,42 @@ move $s2,$v0
 beq $s0, $s1, exit
 j loop
 exit:
-li $v0, 401
+li $v0, 14
 la $a0, msg2
-syscall
-li $v0,117
-move $a0, $s2
-syscall
-li $v0,424
-la $a0, lf
-syscall
-li $v0,114
-syscall
-add2:
-addi $sp,$sp, 40
-sw $s0,0($sp)
-add $s0,$a0,$a1
-move $v0,$s0
-lw $s0,0($sp)
-addi $sp,$sp,414
-jr $ra
-.data
-main:
-li $v0,323
-la $a0, msg1
-syscall
-li $v0,531
-syscall
-move $s0,$v0
-li $s1, 1010
-li $s2, 1020
-loop:
-addi $s1, $s1, 10
-move $a0, $s2
-move $a1, $s1
-jal add2
-move $s2,$v0
-beq $s0, $s1, exit
-j loop
-exit:
-li $v0, 4040
-la $a0, msg2
-syscall
-li $v0,1011
-move $a0, $s2
-syscall
-li $v0,40
-la $a0, lf
 syscall
 li $v0,11
+move $a0, $s2
+syscall
+li $v0,41
+la $a0, lf
+syscall
+li $v0,100
 syscall
 add2:
-addi $sp,$sp, 41
+addi $sp,$sp, -14
 sw $s0,0($sp)
 add $s0,$a0,$a1
 move $v0,$s0
 lw $s0,0($sp)
-addi $sp,$sp,40
+addi $sp,$sp,14
 jr $ra
 .data
+msg1: .asciiz "Number of integers (N)?  "
+msg2: .asciiz "Sum = "
+lf:     .asciiz "\n"
+.text
+.globl main
 main:
-li $v0,31
+li $v0,340
 la $a0, msg1
 syscall
-li $v0,52
+li $v0,50
 syscall
 move $s0,$v0
-li $s1, 20
-li $s2, 4
+li $s1, 10
+li $s2, 10
 loop:
-addi $s1, $s1, 1
+addi $s1, $s1, 11
 move $a0, $s2
 move $a1, $s1
 jal add2
@@ -246,37 +61,42 @@ move $s2,$v0
 beq $s0, $s1, exit
 j loop
 exit:
-li $v0, 4
+li $v0, 14
 la $a0, msg2
-syscall
-li $v0,137
-move $a0, $s2
-syscall
-li $v0,20
-la $a0, lf
 syscall
 li $v0,11
+move $a0, $s2
+syscall
+li $v0,41
+la $a0, lf
+syscall
+li $v0,100
 syscall
 add2:
-addi $sp,$sp, 41
+addi $sp,$sp, -14
 sw $s0,0($sp)
 add $s0,$a0,$a1
 move $v0,$s0
 lw $s0,0($sp)
-addi $sp,$sp,41
+addi $sp,$sp,14
 jr $ra
 .data
+msg1: .asciiz "Number of integers (N)?  "
+msg2: .asciiz "Sum = "
+lf:     .asciiz "\n"
+.text
+.globl main
 main:
-li $v0,31
+li $v0,340
 la $a0, msg1
 syscall
-li $v0,5101
+li $v0,50
 syscall
 move $s0,$v0
-li $s1, 1110
-li $s2, 2120
+li $s1, 10
+li $s2, 10
 loop:
-addi $s1, $s1, 10
+addi $s1, $s1, 11
 move $a0, $s2
 move $a1, $s1
 jal add2
@@ -284,24 +104,24 @@ move $s2,$v0
 beq $s0, $s1, exit
 j loop
 exit:
-li $v0, 41
+li $v0, 14
 la $a0, msg2
 syscall
-li $v0,1
+li $v0,11
 move $a0, $s2
 syscall
-li $v0,2
+li $v0,41
 la $a0, lf
 syscall
-li $v0,9
+li $v0,100
 syscall
 add2:
-addi $sp,$sp, 10
+addi $sp,$sp, -14
 sw $s0,0($sp)
 add $s0,$a0,$a1
 move $v0,$s0
 lw $s0,0($sp)
-addi $sp,$sp,0
+addi $sp,$sp,14
 jr $ra
 .data
 msg1: .asciiz "Number of integers (N)?  "

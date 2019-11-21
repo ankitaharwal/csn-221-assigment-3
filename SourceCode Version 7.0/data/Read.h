@@ -349,7 +349,7 @@ bool compareFiles(string filename ){
   }//while loop
   if (printed)
     return false;
-  printf("voila no differeces found \n");
+  printf("voila no differeces found \n\n");
   return true;
 }
 

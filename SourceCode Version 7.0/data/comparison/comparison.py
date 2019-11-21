@@ -3,8 +3,7 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import math
 import os
-
-
+import sys
 
 def data_analysis(l_data,l_encoded):
    l_data=[int(i.replace("\n","")) for i in l_data]
@@ -65,7 +64,7 @@ print("In the original research, \nNumber of bits were 32")
 print("Number of bits of OP code :6")
 print("Number of bits of Reg :5")
 print("Number of bits of Immediate value :16")
-img=mpimg.imread('1.png')
+
 
 file_name="file1"
 path=os.getcwd()[:-10]+file_name+".txt"
@@ -117,12 +116,16 @@ for i in ["LAC","IAC","UAC","LPC","IPC","UPC"]:
 plt.bar(*zip(*d_final_size.items()))
 plt.xlabel("Type of technique")
 plt.ylabel("Memory used (Bits)")
-plt.show()
+try:
+	name=sys.argv[1]
+except:
+	name=""
+plt.savefig(f"memory used{name}.png")
 plt.close()
 plt.bar(*zip(*d_final_result.items()))
 plt.xlabel("Type of technique")
 plt.ylabel("Reduction Ratio")
-plt.show()
+plt.savefig(f"reduction ratio{name}.png")
 plt.close()
 f_encoded.close()
 f_data.close()

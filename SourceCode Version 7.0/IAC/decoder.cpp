@@ -36,5 +36,7 @@ void iac_decoder(string filename)
 int main() 
 { 
     iac_decoder("file1");
+    cout<<"comparing two files"<<endl;
+    compareFiles("file1");
     return 0; 
 } 

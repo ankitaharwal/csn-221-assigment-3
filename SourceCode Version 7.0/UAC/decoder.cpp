@@ -26,5 +26,7 @@ void uac_decoder(string filename)
 int main() 
 { 
     uac_decoder("file1");
+    cout<<"comparing two files"<<endl;
+    compareFiles("file1");
     return 0; 
 } 
