@@ -1,3 +1,9 @@
+## Path to the Files
+For report files visit /Project-Report-Files OR see the /Project-Report.pdf
+For analysis of the source code please visit /SourceCode-Version-7.0 you will find all the files here 
+For Results please visit /SourceCode-Version-7.0/data/comparison
+To run the program just download /SourceCode-Version-7.0 folder and in data files put your 3 MIPS programs in .txt folders with names "file_1.txt" , "file_2.txt" and "file_3.txt". Open terminal in SourceCode-Version-7.0 folder and run the command ./run.sh ! results will be generated in above mentioned folder.
+
 Hi First Of All Thanks For visiting this repository.
 ## Instruction Encoding for Area minimalization of Instruction ROM.
 In this current age of COMPETITION it has become a neccessity to optimise performance of our systems in order to just stay with the front. Every Year hundreds of companies / products show up in the market and hundreds of them (+ already existing) leave the market.
